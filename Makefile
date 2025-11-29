@@ -6,7 +6,7 @@
 #    By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 16:26:03 by ryatan            #+#    #+#              #
-#    Updated: 2025/11/28 23:00:28 by ryatan           ###   ########.fr        #
+#    Updated: 2025/11/29 08:28:40 by ryatan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SOURCE_FILES = ft_printf.c
 
 OBJECT_FILES = $(SOURCE_FILES:%.c=%.o)
 
-TEST_FILE = test.c
+TEST_FILE = ft_printf.c parser.c test.c
 EXEC = test
 
 # rules
@@ -38,8 +38,8 @@ $(NAME): $(OBJECT_FILES)
 	$(ARCHIVE) $(ARCHIVE_FLAGS) $(NAME) $(OBJECT_FILES)
 
 # testing with an exe
-$(EXEC): $(OBJECT_FILES) $(NAME) $(LIBFT)
-	$(COMPILER) $(TEST_FILE) $(OBJECT_FILES) -L. -lftprintf -L$(LIBFT_DIR) -lft -o $(EXEC)
+$(EXEC): $(TEST_FILE) $(NAME) $(LIBFT)
+	$(COMPILER) $(TEST_FILE) -L. -lftprintf -L$(LIBFT_DIR) -lft -o $(EXEC)
 
 all: $(LIBFT) $(NAME) $(EXEC)
 
@@ -48,7 +48,7 @@ clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(EXEC)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
