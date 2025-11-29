@@ -6,7 +6,7 @@
 #    By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 16:26:03 by ryatan            #+#    #+#              #
-#    Updated: 2025/11/29 08:28:40 by ryatan           ###   ########.fr        #
+#    Updated: 2025/11/29 14:09:50 by ryatan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ CFLAGS = -Wall -Werror -Wextra -Ilibft
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SOURCE_FILES = ft_printf.c 
+SOURCE_FILES = ft_printf.c formatter_extract.c \
+			   #formatter_validate.c
 
 OBJECT_FILES = $(SOURCE_FILES:%.c=%.o)
 
-TEST_FILE = ft_printf.c parser.c test.c
+TEST_FILE = test.c
 EXEC = test
 
 # rules

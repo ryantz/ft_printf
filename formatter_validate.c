@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   formatter_validate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 21:29:55 by ryatan            #+#    #+#             */
-/*   Updated: 2025/11/29 15:05:25 by ryatan           ###   ########.fr       */
+/*   Created: 2025/11/29 14:07:35 by ryatan            #+#    #+#             */
+/*   Updated: 2025/11/29 16:25:23 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	**ft_handle_new_line(char *c_format)
+t_format	ft_formatter_parse(char **formatter_store)
 {
-	char **ret;
-
-	ret = ft_split(c_format, '\n');
-	return (ret);
-}
-
-int	ft_printf(const char *format, ...)
-{
-	char	*c_format;
-
-	c_format = (char *)format;
-	return (1);
+	t_format	formatter_struct;
+	return (formatter_struct);
 }
