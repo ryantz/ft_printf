@@ -6,7 +6,7 @@
 /*   By: ryatan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 15:37:41 by ryatan            #+#    #+#             */
-/*   Updated: 2025/11/27 18:18:24 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/11/30 17:28:13 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	j = 0;
 	while (s1[j])
-	{
-		p_strjoin[i] = s1[j];
-		j++;
-		i++;
-	}
+		p_strjoin[i++] = s1[j++];
 	j = 0;
 	while (s2[j])
-	{
-		p_strjoin[i] = s2[j];
-		j++;
-		i++;
-	}
+		p_strjoin[i++] = s2[j++];
 	p_strjoin[i] = '\0';
 	return (p_strjoin);
 }
