@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 18:30:53 by ryatan            #+#    #+#             */
-/*   Updated: 2025/11/29 16:24:43 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/11/30 17:24:20 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft/libft.h"
 
 // test lib
-#include <stdio.h>
+# include <stdio.h>
 
 typedef struct s_format
 {
