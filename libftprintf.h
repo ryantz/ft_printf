@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 18:30:53 by ryatan            #+#    #+#             */
-/*   Updated: 2025/11/30 17:24:20 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/11/30 22:59:05 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@
 
 typedef struct s_format
 {
-	char	flag;
+	int		minus_flag;
+	int		zero_flag;
+	int		hash_flag;
+	int		plus_flag;
+	int		space_flag;
 	int		width;
 	int		precision_flag;
 	int		length;
