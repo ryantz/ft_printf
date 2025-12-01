@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 18:30:53 by ryatan            #+#    #+#             */
-/*   Updated: 2025/11/30 22:59:05 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/01 08:29:37 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 // test lib
 # include <stdio.h>
 
+// formatter structure check
 typedef struct s_format
 {
 	int		minus_flag;
@@ -29,13 +30,16 @@ typedef struct s_format
 	int		plus_flag;
 	int		space_flag;
 	int		width;
-	int		precision_flag;
+	int		precision;
 	int		length;
 	char	specifier;
 }			t_format;
 
 // functions for formatter
 char	**ft_formatter_extract(char *c_format);
+
+// formatter checkers
+int	ft_hasflag(char c, t_format *formatter_map);
 
 // main printf
 char	**ft_handle_new_line(char *c_format);
