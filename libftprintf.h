@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 18:30:53 by ryatan            #+#    #+#             */
-/*   Updated: 2025/12/01 08:29:37 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/01 11:35:32 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_format
 	int		space_flag;
 	int		width;
 	int		precision;
-	int		length;
 	char	specifier;
 }			t_format;
 
@@ -39,10 +38,14 @@ typedef struct s_format
 char	**ft_formatter_extract(char *c_format);
 
 // formatter checkers
-int	ft_hasflag(char c, t_format *formatter_map);
+int	ft_hasflag(char **formatter, t_format *formatter_map);
 
 // main printf
 char	**ft_handle_new_line(char *c_format);
+int		ft_haswidth(char **formatter, t_format *formatter_map);
+int		ft_hasprecision(char **formatter, t_format *formatter_map);
+int		ft_hasspecifier(char **formatter, t_format *formatter_map);
+void	ft_initialize_formatter_map(t_format *formatter_map);
 int		ft_printf(const char *format, ...);
 
 #endif
