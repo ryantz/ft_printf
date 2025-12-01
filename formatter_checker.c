@@ -6,26 +6,26 @@
 /*   By: ryatan <ryatan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 08:27:04 by ryatan            #+#    #+#             */
-/*   Updated: 2025/12/01 11:36:08 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/01 19:04:49 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_hasflag(char **formatter, t_format *formatter_map)
+int	ft_hasflag(char **formatter, t_format *f_map)
 {
 	while (**formatter)
 	{
 		if (**formatter == '-')
-			formatter_map->minus_flag = 1;
+			f_map->minus_flag = 1;
 		else if (**formatter == '0')
-			formatter_map->zero_flag = 1;
+			f_map->zero_flag = 1;
 		else if (**formatter == '#')
-			formatter_map->hash_flag = 1;
+			f_map->hash_flag = 1;
 		else if (**formatter == '+')
-			formatter_map->plus_flag = 1;
+			f_map->plus_flag = 1;
 		else if (**formatter == ' ')
-			formatter_map->space_flag = 1;
+			f_map->space_flag = 1;
 		else
 			return (0);
 		(*formatter)++;
@@ -34,7 +34,7 @@ int	ft_hasflag(char **formatter, t_format *formatter_map)
 }
 
 // use **formatter to pass by ref and increase pointer idx
-int	ft_haswidth(char **formatter, t_format *formatter_map)
+int	ft_haswidth(char **formatter, t_format *f_map)
 {
 	char	*width_string;
 	int		start;
@@ -56,12 +56,12 @@ int	ft_haswidth(char **formatter, t_format *formatter_map)
 	ft_memcpy(width_string, *formatter, (end - start + 1));
 	width_string[end + 1] = '\0';
 	width_length = ft_atoi(width_string);
-	formatter_map->width = width_length;
+	f_map->width = width_length;
 	*formatter += end + 1;
 	return (free(width_string), width_length);
 }
 
-int	ft_hasprecision(char **formatter, t_format *formatter_map)
+int	ft_hasprecision(char **formatter, t_format *f_map)
 {
 	char	*precision_string;
 	int		start;
@@ -84,12 +84,12 @@ int	ft_hasprecision(char **formatter, t_format *formatter_map)
 	ft_memcpy(precision_string, *formatter, (end - start));
 	precision_string[end + 1] = '\0';
 	precision_value = ft_atoi(precision_string);
-	formatter_map->precision = precision_value;
+	f_map->precision = precision_value;
 	*formatter += end + 1;
 	return (free(precision_string), precision_value);
 }
 
-int	ft_hasspecifier(char **formatter, t_format *formatter_map)
+int	ft_hasspecifier(char **formatter, t_format *f_map)
 {
 	char	*specifiers;
 	int		i;
@@ -100,7 +100,7 @@ int	ft_hasspecifier(char **formatter, t_format *formatter_map)
 	{
 		if (**formatter == specifiers[i])
 		{
-			formatter_map->specifier = specifiers[i];
+			f_map->specifier = specifiers[i];
 			(*formatter)++;
 			return (1);
 		}

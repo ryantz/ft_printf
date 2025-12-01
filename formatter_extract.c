@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 12:33:29 by ryatan            #+#    #+#             */
-/*   Updated: 2025/11/30 18:06:39 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/01 22:09:49 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ static int	ft_formatter_count(char *c_format)
 
 	count = 0;
 	i = 0;
-	while (c_format[i++])
+	while (c_format[i])
 	{
 		if (c_format[i] == '%')
 			count++;
+		i++;
 	}
 	return (count);
 }
@@ -33,29 +34,22 @@ static char	*ft_allocate_inner(char *c_format, int *start, int *end)
 {
 	char	*charset;
 	char	*format_inner_string;
-	int		i;
-	int		j;
+	char	*start_ptr;
+	char	*in_formatter;
 
-	charset = "cspdiuxX0123456789%-0.# +";
-	while (c_format[*start] && c_format[*start] != '%')
-		(*start)++;
-	*end = *start;
-	i = 0;
-	while (charset[i++])
-	{
-		while (c_format[*end] && c_format[*end] == charset[i])
-		{
-			(*end)++;
-			i = 0;
-		}
-	}
+	charset = "cspdiuxX0123456789-0.# +";
+
+	start_ptr = ft_strchr(c_format + *start,'%');
+	*start = (start_ptr - c_format) + 1;
+	in_formatter = c_format + *start;
+	while (*in_formatter && ft_strchr(charset, *in_formatter))
+		in_formatter++;
+	*end = in_formatter - c_format;
 	format_inner_string = malloc(sizeof(char) * ((*end - *start) + 1));
 	if (!format_inner_string)
 		return (NULL);
-	j = 0;
-	while (*start < *end)
-		format_inner_string[j++] = c_format[(*start)++];
-	return (format_inner_string[j] = '\0', format_inner_string);
+	ft_memcpy(format_inner_string, c_format + *start, *end - *start);
+	return (format_inner_string[*end - *start] = '\0', format_inner_string);
 }
 
 static void	ft_free_all(int formatter_sym_count, char **outer)
