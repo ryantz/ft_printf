@@ -6,7 +6,7 @@
 #    By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 16:26:03 by ryatan            #+#    #+#              #
-#    Updated: 2025/12/01 17:22:00 by ryatan           ###   ########.fr        #
+#    Updated: 2025/12/02 08:08:07 by ryatan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SOURCE_FILES = ft_printf.c formatter_extract.c formatter_checker.c \
-			   formatter_validate.c print_functions.c
+			   formatter_validate.c print_functions.c formatter_translate.c
 
 OBJECT_FILES = $(SOURCE_FILES:%.c=%.o)
 

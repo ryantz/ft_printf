@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 14:07:35 by ryatan            #+#    #+#             */
-/*   Updated: 2025/12/01 22:47:07 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/02 07:39:52 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ t_format ft_formatter_properties(char *formatter)
 	precision = ft_hasprecision(&formatter, &f_map);
 	specifier = ft_hasspecifier(&formatter, &f_map);
 	ft_formatter_correction(&f_map);
+	if (!flag && !width && !precision && !specifier)
+		printf("ok");
 	return (f_map);
 }

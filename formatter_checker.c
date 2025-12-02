@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 08:27:04 by ryatan            #+#    #+#             */
-/*   Updated: 2025/12/01 19:04:49 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/02 07:45:13 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,12 @@ int	ft_hasprecision(char **formatter, t_format *f_map)
 	start = 0;
 	end = 0;
 	i = 0;
-	while ((*formatter)[i++] && ((*formatter)[i] >= '0'
+	while ((*formatter)[i] && ((*formatter)[i] >= '0'
 			&& (*formatter)[i] <= '9'))
+	{
 		end++;
+		i++;
+	}
 	precision_string = malloc(sizeof(char) * ((end - start) + 1));
 	if (!precision_string)
 		return (0);
@@ -85,7 +88,7 @@ int	ft_hasprecision(char **formatter, t_format *f_map)
 	precision_string[end + 1] = '\0';
 	precision_value = ft_atoi(precision_string);
 	f_map->precision = precision_value;
-	*formatter += end + 1;
+	*formatter += end;
 	return (free(precision_string), precision_value);
 }
 

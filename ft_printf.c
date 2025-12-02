@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 21:29:55 by ryatan            #+#    #+#             */
-/*   Updated: 2025/12/01 21:53:46 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/02 07:57:25 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,52 +20,54 @@
 //	return (ret);
 //}
 
-static void	ft_helper_types_1(va_list args, char f_map_specifier)
+static void	ft_helper_types_1(va_list args, t_format *f_map)
 {
 	char	*s;
 	char	c;
 	int		d;
 	void	*p;
 
-	if (f_map_specifier == 's')
+	if (f_map->specifier == 's')
 	{
-		s = va_arg(args, char *);
+		printf("in\n");
+		s = ft_formatter_translate_s(f_map, va_arg(args, char*));
 		ft_putstr_fd(s, 1);
+		free(s);
 	}
-	else if (f_map_specifier == 'c')
+	else if (f_map->specifier == 'c')
 	{
 		c = (char)va_arg(args, int);
 		ft_putchar_fd(c, 1);
 	}
-	else if (f_map_specifier == 'd' || f_map_specifier == 'i')
+	else if (f_map->specifier == 'd' || f_map->specifier == 'i')
 	{
 		d = va_arg(args, int);
 		ft_putnbr_fd(d, 1);
 	}
-	else if (f_map_specifier == 'p')
+	else if (f_map->specifier == 'p')
 	{
 		p = va_arg(args, void *);
 		ft_putpointer(p);
 	}
 }
 
-static void	ft_helper_types_2(va_list args, char f_map_specifier)
+static void	ft_helper_types_2(va_list args, t_format *f_map)
 {
 	unsigned int	u;
 	unsigned int	x_lower;
 	unsigned int	x_upper;
 
-	if (f_map_specifier == 'u')
+	if (f_map->specifier == 'u')
 	{
 		u = va_arg(args, unsigned int);
 		ft_putunbr(u);
 	}
-	else if (f_map_specifier == 'x')
+	else if (f_map->specifier == 'x')
 	{
 		x_lower = va_arg(args, unsigned int);
 		ft_puthex(x_lower, 'l');
 	}
-	else if (f_map_specifier == 'X')
+	else if (f_map->specifier == 'X')
 	{
 		x_upper = va_arg(args, unsigned int);
 		ft_puthex(x_upper, 'u');
@@ -92,9 +94,9 @@ int	ft_printf(const char *format, ...)
 		if (f_map.specifier == 's' || f_map.specifier == 'c'
 			|| f_map.specifier == 'p' || f_map.specifier == 'd'
 			|| f_map.specifier == 'i')
-			ft_helper_types_1(args, f_map.specifier);
+			ft_helper_types_1(args, &f_map);
 		else
-			ft_helper_types_2(args, f_map.specifier);
+			ft_helper_types_2(args, &f_map);
 		i++;
 	}
 	va_end(args);

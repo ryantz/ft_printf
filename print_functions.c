@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 17:21:44 by ryatan            #+#    #+#             */
-/*   Updated: 2025/12/01 22:00:15 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/02 07:33:15 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putunbr(unsigned int nb)
 	char			cnb;
 
 	lnb = nb;
-	if (lnb >= 0 && lnb <= 9)
+	if (lnb <= 9)
 	{
 		cnb = lnb + '0';
 		write(1, &cnb, 1);
@@ -40,7 +40,7 @@ void	ft_puthex(unsigned int in, char casing)
 	l_in = in;
 	hex_range_lower = "0123456789abcdef";
 	hex_range_upper = "0123456789ABCDEF";
-	if (l_in >= 0 && l_in < 16)
+	if (l_in < 16)
 	{
 		if (casing == 'l')
 			c_in = hex_range_lower[l_in];
@@ -61,7 +61,7 @@ static void	ft_puthex_long(unsigned long ptr)
 	char			c_in;
 
 	hex_range = "0123456789abcdef";
-	if (ptr >= 0 && ptr < 16)
+	if (ptr < 16)
 	{
 		c_in = hex_range[ptr];
 		write(1, &c_in, 1);

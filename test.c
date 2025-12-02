@@ -58,15 +58,12 @@ int	main(void)
 	//printf("formatter->specifier: %c\n", format_map.specifier);
 	//printf("formatter:%s", formatter);
 
-	int	 p = 3;
-	char y = 'c';
-	int *ptr = &p;
-	int z = 4;
-	unsigned int x = 10;
-	unsigned int X = 255;
-	unsigned int ui = 10000000;
 
-	ft_printf("%d%c%p%i%x%X%u", p, y, ptr, z, x, X, ui);
+	char *s = "hello";
+
+	ft_printf("%10.3s", s);
 	printf("\n");
-	printf("%d", x);
+	printf("%10.3s", s);
+	//printf("\n");
+	//printf("%d", x);
 }

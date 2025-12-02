@@ -6,7 +6,7 @@
 /*   By: ryatan <ryatan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 18:30:53 by ryatan            #+#    #+#             */
-/*   Updated: 2025/12/01 21:54:02 by ryatan           ###   ########.fr       */
+/*   Updated: 2025/12/02 07:27:41 by ryatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	ft_putunbr(unsigned int nb);
 char		**ft_formatter_extract(char *c_format);
 void		ft_initialize_formatter_map(t_format *formatter_map);
 t_format	ft_formatter_properties(char *formatter);
+
+// formatter translators
+char	*ft_formatter_translate_s(t_format *f_map, char *input);
 
 // formatter checkers
 int			ft_hasflag(char **formatter, t_format *formatter_map);
